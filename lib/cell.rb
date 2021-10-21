@@ -20,12 +20,16 @@ class Cell
   end
 
   def fired_upon?
-    false
+    @coordinate == fire_upon
+    # require "pry"; binding.pry
   end
 # still working on this code.
 # Need this method to cause the fired_upon? to return true
   def fire_upon
-    ship.hit
+    @coordinate == @coordinate
+    if place_ship(ship) == true
+      ship.hit
     # require "pry"; binding.pry
+    end
   end
 end
