@@ -12,21 +12,38 @@ RSpec.describe Cell do
     expect(cell.coordinate).to eq("B4")
   end
 
-  xit 'ship' do
+  it 'ship' do
     cell = Cell.new("B4")
     expect(cell.ship).to eq(nil)
   end
 
-  xit 'empty?' do
+  it 'empty?' do
     cell = Cell.new("B4")
     expect(cell.empty?).to eq(true)
   end
 
-  xit 'place_ship' do
+  it 'place_ship' do
     cell = Cell.new("B4")
     cruiser = Ship.new("Cruiser", 3)
     cell.place_ship(cruiser)
     expect(cell.ship).to eq(cruiser)
     expect(cell.empty?).to eq(false)
+  end
+
+  it 'fired_upon? false by default' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+    cell.fired_upon?
+    expect(cell.fired_upon?).to eq(false)
+  end
+
+  it 'fire_upon' do
+    cell = Cell.new("B4")
+    cruiser = Ship.new("Cruiser", 3)
+    cell.place_ship(cruiser)
+    cell.fire_upon
+    expect(cell.ship.health).to eq(2)
+    expect(cell.fired_upon?).to eq(true)
   end
 end
