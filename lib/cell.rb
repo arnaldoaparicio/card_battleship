@@ -31,17 +31,17 @@ class Cell
     end
   end
   # still incomplete code below
-  # def render(ship_present: false)
-  #     ship_present = true
+  def render(ship_present = false)
   #   require "pry"; binding.pry
-  #   if @fire_upon == true && empty? == true
-  #     return "M"
-  #   end
-  #   if @fired_upon == false && ship_present == true
-  #     return 'S'
-  #   end
-  #   return '.'
+    if @fire_upon == true && empty? == true
+      return "M"
+    end
+    ship_present = true
+    if @fired_upon == false && @ship != nil && ship_present == true
+      return 'S'
+    end
   #    if @fire_upon == true && empty? == false
+  return '.'
   #      p "H"
   #    end
   #    if empty? == false && ship.sunk? == true
@@ -51,5 +51,5 @@ class Cell
   #    end
   #
   #
-  #    end
   end
+end
