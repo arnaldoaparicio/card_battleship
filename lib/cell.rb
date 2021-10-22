@@ -2,9 +2,10 @@
 
 class Cell
   attr_reader :coordinate,
-              :ship,
-              :fire_upon
-  def initialize(coordinate)
+  :ship,
+  :fire_upon,
+  :ship_present
+  def initialize(coordinate, ship_present: false)
     @coordinate = coordinate
     @ship       = nil
     @fire_upon  = false
@@ -29,20 +30,26 @@ class Cell
       ship.hit
     end
   end
-# still incomplete code below
-  def render(ship_present)
-    ship_present = @ship
-    if @fire_upon = true && @ship = nil
-    p "M"
-    elsif @fire_upon = && @ship = place_ship(ship)
-    p "H"
-    elsif @fire_upon = true && ship.sunk?
-    p "X"
-    elsif fire_upon = false && place_ship(ship) == true
-    p "S"
-
-    require "pry"; binding.pry
-  #   if fired_upon? = false
-  #     puts "."
+  # still incomplete code below
+  # def render(ship_present: false)
+  #     ship_present = true
+  #   require "pry"; binding.pry
+  #   if @fire_upon == true && empty? == true
+  #     return "M"
+  #   end
+  #   if @fired_upon == false && ship_present == true
+  #     return 'S'
+  #   end
+  #   return '.'
+  #    if @fire_upon == true && empty? == false
+  #      p "H"
+  #    end
+  #    if empty? == false && ship.sunk? == true
+  #      p "X"
+  #      # elsif fire_upon == false && place_ship(ship) == true
+  #         p "S"
+  #    end
+  #
+  #
+  #    end
   end
-end
