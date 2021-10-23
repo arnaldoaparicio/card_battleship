@@ -29,7 +29,7 @@ class Board
   end
 
   def valid_placement?(ship, placement)
-    # require "pry"; binding.pry
+    require "pry"; binding.pry
     ship.length == placement.count
 
   end
