@@ -43,4 +43,15 @@ class Board
     ["B4", "C4", "D4"]]
     ship.length == placement.count && x.include?(placement)
   end
+
+  def place(ship, placement)
+    # require "pry"; binding.pry
+    cell.place_ship(ship)
+    coordinates = placement.each_slice(1).to_a
+    coordinates.map do |coordinate|
+
+      # coordinates = ship
+
+    end
+  end
 end
