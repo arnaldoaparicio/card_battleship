@@ -50,5 +50,7 @@ RSpec.describe Board do
     expect(board.cells.values.first).to be_an_instance_of(Cell)
 
     expect(board.valid_placement?(cruiser, ["A1", "A2", "A4"])).to eq(false)
+    expect(board.valid_placement?(cruiser, ["A1", "B1", "C1"])).to eq(true)
+    expect(board.valid_placement?(submarine, ["A1", "B1", "C1"])).to eq(false)
   end
 end
