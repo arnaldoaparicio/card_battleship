@@ -22,6 +22,8 @@ class Board
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4")
     }
+
+
   end
 
   def valid_coordinate?(exists)
@@ -41,17 +43,16 @@ class Board
     ["B1", "C1", "D1"],["A2", "B2", "C2"],["B2", "C2", "D2"],
     ["A3", "B3", "C3"],["B3", "C3", "D3"],["A4", "B4", "C4"],
     ["B4", "C4", "D4"]]
-    ship.length == placement.count && x.include?(placement)
+
+
+    ship.length == placement.count && x.include?(placement) && placement.all? {|coordinate| @cells[coordinate].empty?}
   end
 
   def place(ship, placement)
-    # require "pry"; binding.pry
-    cell.place_ship(ship)
-    coordinates = placement.each_slice(1).to_a
-    coordinates.map do |coordinate|
-
-      # coordinates = ship
-
+    valid_placement?(ship, placement)
+    # placement.each_slice(1).to_a.map do |coordinate|
+    placement.map do |coordinate|
+      @cells[coordinate].place_ship(ship)
     end
   end
 end
