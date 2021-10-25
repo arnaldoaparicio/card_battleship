@@ -43,13 +43,13 @@ class Board
     ["A3", "B3", "C3"],["B3", "C3", "D3"],["A4", "B4", "C4"],
     ["B4", "C4", "D4"]]
 
-# require "pry"; binding.pry
+ # require "pry"; binding.pry
     ship.length == placement.count && x.include?(placement) && placement.all? {|coordinate| @cells[coordinate].empty?}
 
   end
 
   def place(ship, placement)
-    valid_placement?(ship, placement)
+    # valid_placement?(ship, placement)
     # placement.each_slice(1).to_a.map do |coordinate|
     placement.map do |coordinate|
       @cells[coordinate].place_ship(ship)
