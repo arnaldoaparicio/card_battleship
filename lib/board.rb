@@ -22,6 +22,8 @@ class Board
       "D3" => Cell.new("D3"),
       "D4" => Cell.new("D4")
     }
+
+
   end
 
   def valid_coordinate?(exists)
@@ -41,6 +43,26 @@ class Board
     ["B1", "C1", "D1"],["A2", "B2", "C2"],["B2", "C2", "D2"],
     ["A3", "B3", "C3"],["B3", "C3", "D3"],["A4", "B4", "C4"],
     ["B4", "C4", "D4"]]
-    ship.length == placement.count && x.include?(placement)
+
+
+    ship.length == placement.count && x.include?(placement) && placement.all? {|coordinate| @cells[coordinate].empty?}
+  end
+
+  def place(ship, placement)
+    valid_placement?(ship, placement)
+    # placement.each_slice(1).to_a.map do |coordinate|
+    placement.map do |coordinate|
+      @cells[coordinate].place_ship(ship)
+    end
+  end
+
+  def render(ship_present=false)
+    row_a = "#{@cells["A1"].render(ship_present)} #{@cells["A2"].render(ship_present)} #{@cells["A3"].render(ship_present)} #{@cells["A4"].render(ship_present)}"
+    row_b = "#{@cells["B1"].render(ship_present)} #{@cells["B2"].render(ship_present)} #{@cells["B3"].render(ship_present)} #{@cells["B4"].render(ship_present)}"
+    row_c = "#{@cells["C1"].render(ship_present)} #{@cells["C2"].render(ship_present)} #{@cells["C3"].render(ship_present)} #{@cells["C4"].render(ship_present)}"
+    row_d = "#{@cells["D1"].render(ship_present)} #{@cells["D2"].render(ship_present)} #{@cells["D3"].render(ship_present)} #{@cells["D4"].render(ship_present)}"
+
+    game = "  1 2 3 4 \nA #{row_a} \nB #{row_b} \nC #{row_c} \nD #{row_d} \n"
+    game
   end
 end
