@@ -55,4 +55,14 @@ class Board
       @cells[coordinate].place_ship(ship)
     end
   end
+
+  def render(ship_present=false)
+    row_a = "#{@cells["A1"].render(ship_present)} #{@cells["A2"].render(ship_present)} #{@cells["A3"].render(ship_present)} #{@cells["A4"].render(ship_present)}"
+    row_b = "#{@cells["B1"].render(ship_present)} #{@cells["B2"].render(ship_present)} #{@cells["B3"].render(ship_present)} #{@cells["B4"].render(ship_present)}"
+    row_c = "#{@cells["C1"].render(ship_present)} #{@cells["C2"].render(ship_present)} #{@cells["C3"].render(ship_present)} #{@cells["C4"].render(ship_present)}"
+    row_d = "#{@cells["D1"].render(ship_present)} #{@cells["D2"].render(ship_present)} #{@cells["D3"].render(ship_present)} #{@cells["D4"].render(ship_present)}"
+
+    game = "  1 2 3 4 \nA #{row_a} \nB #{row_b} \nC #{row_c} \nD #{row_d} \n"
+    game
+  end
 end
