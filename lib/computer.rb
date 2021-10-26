@@ -16,7 +16,7 @@ class Setup
   # show new board to player
   # respond to invalid placements
   def computer_setup
-    
+
   end
 
   def sub_placement(ship, placement=nil)
@@ -30,13 +30,7 @@ class Setup
 
 
     placement = x.sample
-    if ship.length == 2
-      board.place(ship, placement)
-    else
-      puts "You have not entered a valid placement."
-    end
-    # require "pry"; binding.pry
-    # return placement
+  board.place(ship, placement)
   end
 
   def cruiser_placement
@@ -49,8 +43,7 @@ class Setup
 
 
     a = x.sample
-    cruiser = Ship.new("Cruiser", 3)
-    board.valid_placement?(cruiser, a)
-    board.place(cruiser, a)
+    placement = x.sample
+    board.place(ship, placement)
   end
 end
