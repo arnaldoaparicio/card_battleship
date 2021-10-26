@@ -35,9 +35,9 @@ RSpec.describe Setup do
 
   it "places a sub" do
     board = Board.new
-    setup = Setup.new(board)
-    submarine = Ship.new("Submarine", 2)
-    expect(setup.sub_placement(submarine, [])).to eq(true)
+    setup = Computer.new(board)
+    ship = Ship.new("Submarine", 2)
+    expect(setup.sub_placement(ship, [])).to eq([ship, ship])
     # expect(setup.cruiser_placement).to eq(false)
   end
 end
