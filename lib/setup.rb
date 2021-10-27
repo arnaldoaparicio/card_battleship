@@ -36,11 +36,13 @@ class Setup
     ["B4", "C4", "D4"]]
 
       placement = x.sample do |place|
-    until @computer_board.valid_placement?(ship, placement) == true
-
+        y = false
+        while y == false
+        y = @computer_board.valid_placement?(ship, placement)
+        end
       end
+      # require "pry"; binding.pry
       @computer_board.place(ship, placement)
-    end
   end
 
   def computer_render
