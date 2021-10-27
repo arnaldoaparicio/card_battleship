@@ -23,12 +23,13 @@ until response == 'q'
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
 
-    unless board.valid_placement?() ==
+setup.player_placement(cruiser)
+    # unless board.valid_placement?() ==
       puts "Enter the squares for the Cruiser (3 spaces):\n>"
       response = gets.chomp # allows player to quit
       setup.player_render
-      
-      unless board.valid_placement?()
+
+      # unless board.valid_placement?()
         puts "Enter the squares for the Submarine (2 spaces):\n>"
         response = gets.chomp # allows player to quit
         setup.player_render
