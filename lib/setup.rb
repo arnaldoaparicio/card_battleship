@@ -57,7 +57,8 @@ class Setup
     ["A3", "B3", "C3"],["B3", "C3", "D3"],["A4", "B4", "C4"],
     ["B4", "C4", "D4"]]
     # ship = Ship.new("Cruiser", 3)
-    placement = gets.chomp
+    placement = gets.chomp.split
+    # require "pry"; binding.pry
     if x.include?(placement)
       board.place(ship, placement)
     else
