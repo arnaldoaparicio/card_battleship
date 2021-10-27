@@ -1,9 +1,11 @@
 
 class Setup
-  attr_reader :board
+  attr_reader :computer_board,
+              :player_board
 
-  def initialize(board)
-    @board = board
+  def initialize
+    @computer_board = Board.new
+    @player_board   = Board.new
   end
   # will need to place ships for computer
   # allow for player to place ships
@@ -11,7 +13,7 @@ class Setup
   # and how to place ships
   # show new board to player
   # respond to invalid placements
-  def sub_placement(ship)
+  def sub_placement(ship, placement)
 
     x = [["A1", "A2"],["A2", "A3"],["A3", "A4"],["B1", "B2"],
     ["B2", "B3"],["B3", "B4"],["C1", "C2"],["C2", "C3"],
@@ -22,10 +24,10 @@ class Setup
 
 
     placement = x.sample
-    board.place(ship, placement)
+    @computer_board.place(ship, placement)
   end
 
-  def cruiser_placement(ship)
+  def cruiser_placement(ship, placement)
     x = [["A1", "A2", "A3"],["A2", "A3", "A4"],["B1", "B2", "B3"],
     ["B2", "B3", "B4"],["C1", "C2", "C3"],["C2", "C3", "C4"],
     ["D1", "D2", "D3"],["D2", "D3", "D4"],["A1", "B1", "C1"],
@@ -34,19 +36,19 @@ class Setup
     ["B4", "C4", "D4"]]
 
       placement = x.sample do |place|
-    until board.valid_placement?(ship, placement) == true
+    until @computer_board.valid_placement?(ship, placement) == true
 
       end
-      board.place(ship, placement)
+      @computer_board.place(ship, placement)
     end
   end
 
   def computer_render
-    puts board.render(ship_present=false)
+    puts @computer_board.render(ship_present=false)
   end
 
   def player_render
-    puts board.render(ship_present=true)
+    p @player_board.render(ship_present=true)
   end
 
   def player_placement(ship)
@@ -59,7 +61,7 @@ class Setup
     # ship = Ship.new("Cruiser", 3)
     placement = gets.chomp
     if x.include?(placement)
-      board.place(ship, placement)
+      @player_board.place(ship, placement)
     else
       p "Those are invalid coordinates. Please try again:"
       placement = gets.chomp
