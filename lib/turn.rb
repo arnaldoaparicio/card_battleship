@@ -14,4 +14,13 @@ attr_reader :computer_player,
   def display_player_board
     @human_player.player_render
   end
+
+  def player_shot(coordinate)
+    computer_player.board.cells[coordinate].fire_upon
+  end
+
+#This method still needs to be completed
+  def computer_shot(coordinate)
+    human_player.board.cells[coordinate].fire_upon
+  end
 end
